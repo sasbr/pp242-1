@@ -2,13 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Loop</title>
+    <title>User list</title>
     <style>table th, table td {
         padding: 5px;
     }</style>
 </head>
 <body>
-<table border="1">
+<h1 th:align="center">User Data</h1>
+<table th:align="center" border="1">
     <tr>
         <th>id</th>
         <th>first name</th>
@@ -17,6 +18,8 @@
         <th>Update</th>
         <th>Delete</th>
         <th>Role</th>
+        <th>OUT</th>
+
     </tr>
 
     <tr th:each="user: ${users}">
@@ -27,8 +30,8 @@
         <td><a th:href="@{/admin/update(id=${user.id})}">Update</a></td>
         <td><a th:href="@{/admin/delete(id=${user.id})}">Delete</a></td>
         >
-        <td th:utext="${user.roles}">Roles</td>
-        <p th:each="role,stat:${user.getRoles()}">
+        <td th:align="center" th:utext="${user.roles}">Roles</td>
+        <p th:align="center" th:each="role,stat:${user.getRoles()}">
             <input type="text" th:name="roles[__${stat.index}__].id" th:value="${role.getId()}">
             <input type="text" th:name="roles[__${stat.index}__].role" th:value="${role.getRole()}">
         </p>
@@ -37,7 +40,7 @@
     </tr>
 </table>
 
-<form th:method="POST" th:action="@{/admin/add}" th:object="${user}">
+<form  th:align="center" th:method="POST" th:action="@{/admin/add}" th:object="${user}">
     <div>
         <label for="firstName">First name</label>
         <input type="text" th:field="*{firstName}" id="firstName">
@@ -66,6 +69,8 @@
 
         <label for="role">Role</label>
         <input type="text" th:name="role" id="role">
+
+        <br>
 
         <input type="submit" value="Add user"/>
     </div>

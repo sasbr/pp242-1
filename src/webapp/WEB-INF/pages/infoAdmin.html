@@ -8,12 +8,13 @@
     }</style>
 </head>
 <body>
-<table border="1">
+<table th:align="center" border="1">
     <tr>
         <th>id</th>
         <th>first name</th>
         <th>last name</th>
         <th>email</th>
+        <th>action</th>
     </tr>
 
     <tr th:each="user: ${user}">
